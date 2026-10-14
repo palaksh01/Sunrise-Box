@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Sunrise Box</string>
+
+    <!-- Screen titles -->
+    <string name="title_booking">Book a Slot</string>
+    <string name="title_my_bookings">My Bookings</string>
+    <string name="title_location">Venue Location</string>
+    <string name="title_profile">Profile</string>
+
+    <!-- Bottom bar -->
+    <string name="tab_explore">Explore</string>
+    <string name="tab_bookings">My Bookings</string>
+    <string name="tab_profile">Profile</string>
+
+    <!-- Explore (home) screen -->
+    <string name="explore_heading">Find your box</string>
+    <string name="explore_subheading">Box cricket venues across Chandigarh, Mohali &amp; Panchkula</string>
+    <string name="sample_data_label">Sample data for demo</string>
+    <string name="venue_image_desc">Box cricket venue photo</string>
+    <string name="btn_book">Book</string>
+    <string name="btn_map">Map</string>
+    <string name="welcome_title">Welcome to Sunrise Box</string>
+    <string name="welcome_message">Explore box cricket venues in the tricity, book a slot and manage your bookings.</string>
+    <string name="about_title">About Sunrise Box</string>
+    <string name="about_message">Sunrise Box is a MAD project app for box-cricket slot booking requests. Venue data is sample data. Bookings are stored on this phone in an SQLite database. There is no payment and no live availability check.</string>
+
+    <!-- Menu -->
+    <string name="menu_all_venues_map">All venues map</string>
+    <string name="menu_about">About</string>
+
+    <!-- Booking screen -->
+    <string name="label_name">Captain / team name</string>
+    <string name="hint_name">Enter name</string>
+    <string name="label_phone">Phone number</string>
+    <string name="hint_phone">10-digit mobile number</string>
+    <string name="label_duration">Slot duration</string>
+    <string name="label_format">Match format</string>
+    <string name="format_six">6-a-side</string>
+    <string name="format_eight">8-a-side</string>
+    <string name="format_nets">Practice nets</string>
+    <string name="label_extras">Extras (optional)</string>
+    <string name="extra_kit">Bat &amp; ball rental</string>
+    <string name="extra_lights">Floodlights</string>
+    <string name="extra_umpire">Umpire</string>
+    <string name="label_date">Booking date</string>
+    <string name="label_time">Start time</string>
+    <string name="btn_submit">Submit Booking</string>
+    <string name="btn_update">Update Booking</string>
+
+    <!-- My bookings screen -->
+    <string name="btn_upcoming">Upcoming</string>
+    <string name="btn_past">Past</string>
+    <string name="no_upcoming">No upcoming bookings. Book a venue from Explore.</string>
+    <string name="no_past">No past bookings yet.</string>
+    <string name="tap_hint_upcoming">Tap a booking to update or cancel it.</string>
+    <string name="tap_hint_past">Tap a booking to see its details.</string>
+
+    <!-- Profile screen -->
+    <string name="profile_image_desc">Profile picture</string>
+    <string name="label_email">Email</string>
+    <string name="hint_email">name@example.com</string>
+    <string name="btn_save_profile">Save Profile</string>
+    <string name="profile_saved_note">Your profile is saved in a file on this phone and fills in the booking form for you.</string>
+</resources>

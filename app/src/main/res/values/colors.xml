@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sunrise Box brand colours (purple theme) -->
+    <color name="purple_primary">#FF6A1B9A</color>
+    <color name="purple_dark">#FF4A148C</color>
+    <color name="purple_light">#FFCE93D8</color>
+    <color name="purple_pale">#FFEDE1F5</color>
+    <color name="gold_accent">#FFFFC107</color>
+    <color name="screen_background">#FFF6F0FA</color>
+    <color name="text_primary">#FF212121</color>
+    <color name="text_secondary">#FF616161</color>
+    <color name="tab_inactive">#FF9E9E9E</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

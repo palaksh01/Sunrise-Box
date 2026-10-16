@@ -1,9 +1,13 @@
 package com.example.sunrisebox;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 // Explore screen: shows every venue from the database as a card.
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +31,23 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout venueContainer;
     TextView tabBookings, tabProfile;
     DatabaseHelper db;
+
+    // BroadcastReceiver: Android sends ACTION_AIRPLANE_MODE_CHANGED when Airplane Mode is switched.
+    // The "state" extra is true when it was turned ON and false when it was turned OFF.
+    BroadcastReceiver airplaneReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean isOn = intent.getBooleanExtra("state", false);
+            if (isOn) {
+                Toast.makeText(context, "Airplane Mode ON", Toast.LENGTH_SHORT).show();
+                // Short vibration through the view (no VIBRATE permission needed)
+                venueContainer.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+            } else {
+                Toast.makeText(context, "Airplane Mode OFF", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+    boolean receiverRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +83,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
             }
         });
+    }
+
+    // Listen for Airplane Mode only while this screen is visible
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!receiverRegistered) {
+            IntentFilter filter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            ContextCompat.registerReceiver(this, airplaneReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
+            receiverRegistered = true;
+        }
+    }
+
+    // Stop listening when the screen is hidden (avoids leaks and duplicate registrations)
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (receiverRegistered) {
+            unregisterReceiver(airplaneReceiver);
+            receiverRegistered = false;
+        }
     }
 
     // Read the venues table and add one card (item_venue.xml) per venue

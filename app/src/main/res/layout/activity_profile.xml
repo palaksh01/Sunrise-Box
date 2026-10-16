@@ -26,7 +26,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="24dp">
 
-                <!-- Round profile picture (fixed placeholder image) -->
+                <!-- Round profile picture (can be changed with Camera or Gallery) -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="112dp"
                     android:layout_height="112dp"
@@ -44,6 +44,16 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_launcher_foreground" />
                 </com.google.android.material.card.MaterialCardView>
+
+                <!-- Opens a Camera / Gallery choice dialog -->
+                <Button
+                    android:id="@+id/btnChangePhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/gold_accent"
+                    android:text="@string/btn_change_photo"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tvProfileName"
@@ -135,6 +145,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@string/btn_save_profile" />
+
+                    <!-- Exports the profile and all bookings to a .txt file the user chooses -->
+                    <Button
+                        android:id="@+id/btnDownloadData"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/btn_download_data" />
 
                     <TextView
                         android:layout_width="match_parent"

@@ -60,5 +60,7 @@
     <string name="label_email">Email</string>
     <string name="hint_email">name@example.com</string>
     <string name="btn_save_profile">Save Profile</string>
+    <string name="btn_change_photo">Change Profile Photo</string>
+    <string name="btn_download_data">Download All Data (.txt)</string>
     <string name="profile_saved_note">Your profile is saved in a file on this phone and fills in the booking form for you.</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.sunrisebox;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.ParcelFileDescriptor;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -12,6 +14,7 @@ import java.io.InputStreamReader;
 // File location on the phone: /data/data/com.example.sunrisebox/files/profile.txt
 // Line 1 = name, line 2 = phone, line 3 = email.
 // Bookings are NOT stored here - they are stored in SQLite (DatabaseHelper).
+// saveTextToUri() writes the "Download All Data" export to a file the user picks (outside the app).
 public class FileHelper {
 
     public static final String FILE_NAME = "profile.txt";
@@ -46,6 +49,26 @@ public class FileHelper {
             return profile;
         } catch (IOException e) {
             return null;
+        }
+    }
+
+    // Write text to a file the user chose with the system "save" screen (ACTION_CREATE_DOCUMENT).
+    // The Uri points outside the app, so we open it through the ContentResolver and
+    // write with a FileOutputStream. Returns true if it worked.
+    public static boolean saveTextToUri(Context context, Uri uri, String text) {
+        try {
+            ParcelFileDescriptor pfd = context.getContentResolver().openFileDescriptor(uri, "w");
+            if (pfd == null) {
+                return false;
+            }
+            FileOutputStream fos = new FileOutputStream(pfd.getFileDescriptor());
+            fos.write(text.getBytes());
+            fos.close();
+            pfd.close();
+            return true;
+        } catch (IOException | SecurityException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
